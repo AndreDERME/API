@@ -1,7 +1,10 @@
-import express, { json, request, response } from "express"
+import express, { json, request, response } from "express" 
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg;
+
+const prisma = new PrismaClient();
 
 const app = express ()
-
 
 app.use(express.json())
 
@@ -9,9 +12,16 @@ app.use(express.json())
 const users = []
 
 
-app.post ("/usuarios", (request, response) =>{
+app.post ("/usuarios", async (request, response) =>{
+    
+   await prisma.User.creat({
+        data: {
+            email: req.body.email,
+            name: req.body,name,
+            age: req.body.age
+        }
 
-    users.push (request.body)
+    })
 
     response.status(201).json(request.body)
 
@@ -33,5 +43,7 @@ app.listen (3000)
     -editar um usuario
     -deletar um usuario
 
-
+    login no bd
+    andredermee_db_user
+    Andred.02
 */ 
