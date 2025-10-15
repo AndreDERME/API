@@ -14,11 +14,11 @@ const users = []
 
 app.post ("/usuarios", async (request, response) =>{
     
-   await prisma.User.creat({
+   await prisma.user.create({
         data: {
-            email: req.body.email,
-            name: req.body,name,
-            age: req.body.age
+            email: request.body.email,
+            name: request.body.name,
+            age: request.body.age
         }
 
     })
